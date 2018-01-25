@@ -1,1 +1,1 @@
-# Bunden-Foruds-tning---Spiludvikling
+# Bunden-Forudsaetning---Spiludvikling
