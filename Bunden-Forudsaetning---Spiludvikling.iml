@@ -16,5 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="fxgl-0.4.1-uber" level="project" />
   </component>
 </module>

@@ -1,5 +1,7 @@
-package erikogniels;
+// Vores spils package navn
+package com.erikogniels.labyrintspil;
 
+//Imports som skal bruges til FXGL
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -12,7 +14,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import java.util.Map;
 
-public class BasicGameApp extends GameApplication {
+public class LabyrintSpilApp extends GameApplication {
     @Override
     protected void initSettings(GameSettings settings) {}
 
