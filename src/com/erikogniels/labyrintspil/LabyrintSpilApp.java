@@ -17,8 +17,8 @@ import java.util.Map;
 public class LabyrintSpilApp extends GameApplication {
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setWidth(600);
-        settings.setHeight(600);
+        settings.setWidth(700);
+        settings.setHeight(700);
         settings.setTitle("Labyrint Spil");
         settings.setVersion("1.0");
     }
