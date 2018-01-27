@@ -38,6 +38,40 @@ public class LabyrintSpilApp extends GameApplication {
                 .buildAndAttach(getGameWorld());
     }
 
+    // Her kan man indsætte kode til at håndtere input
+    @Override
+    protected void initInput() {
+        Input input = getInput();
+
+        input.addAction(new UserAction("Move Right") {
+            @Override
+            protected void onAction() {
+                player.translateX(2); // går 5 pixels til højre
+            }
+        }, KeyCode.RIGHT);
+
+        input.addAction(new UserAction("Move Left") {
+            @Override
+            protected void onAction() {
+                player.translateX(-2); // går 5 pixels til venstre
+            }
+        }, KeyCode.LEFT);
+
+        input.addAction(new UserAction("Move Up") {
+            @Override
+            protected void onAction() {
+                player.translateY(-2); // går 5 pixels op
+            }
+        }, KeyCode.UP);
+
+        input.addAction(new UserAction("Move Down") {
+            @Override
+            protected void onAction() {
+                player.translateY(2); // går 5 pixels ned
+            }
+        }, KeyCode.DOWN);
+    }
+
     public static void main(String[] args) {
         // Starter spillet
         launch(args);
