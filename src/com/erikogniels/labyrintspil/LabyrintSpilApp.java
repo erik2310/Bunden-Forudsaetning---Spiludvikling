@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.util.Map;
 
@@ -70,6 +71,17 @@ public class LabyrintSpilApp extends GameApplication {
                 player.translateY(2); // går 2 pixels ned
             }
         }, KeyCode.DOWN);
+    }
+
+    // Her kan man tilføje tekst
+    @Override
+    protected void initUI() {
+        Text level1Text = new Text("Level 1"); // laver en tekst
+        level1Text.setTranslateX(15); // dens x position
+        level1Text.setTranslateY(35); // dens y position
+        level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
+
+        getGameScene().addUINode(level1Text); // add to the scene
     }
 
     public static void main(String[] args) {
