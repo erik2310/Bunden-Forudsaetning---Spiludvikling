@@ -46,28 +46,28 @@ public class LabyrintSpilApp extends GameApplication {
         input.addAction(new UserAction("Move Right") {
             @Override
             protected void onAction() {
-                player.translateX(2); // går 5 pixels til højre
+                player.translateX(2); // går 2 pixels til højre
             }
         }, KeyCode.RIGHT);
 
         input.addAction(new UserAction("Move Left") {
             @Override
             protected void onAction() {
-                player.translateX(-2); // går 5 pixels til venstre
+                player.translateX(-2); // går 2 pixels til venstre
             }
         }, KeyCode.LEFT);
 
         input.addAction(new UserAction("Move Up") {
             @Override
             protected void onAction() {
-                player.translateY(-2); // går 5 pixels op
+                player.translateY(-2); // går 2 pixels op
             }
         }, KeyCode.UP);
 
         input.addAction(new UserAction("Move Down") {
             @Override
             protected void onAction() {
-                player.translateY(2); // går 5 pixels ned
+                player.translateY(2); // går 2 pixels ned
             }
         }, KeyCode.DOWN);
     }
