@@ -48,6 +48,7 @@ public class LabyrintSpilApp extends GameApplication {
             @Override
             protected void onAction() {
                 player.translateX(2); // går 2 pixels til højre
+                getGameState().increment("pixelsMoved", +2);
             }
         }, KeyCode.RIGHT);
 
@@ -55,6 +56,7 @@ public class LabyrintSpilApp extends GameApplication {
             @Override
             protected void onAction() {
                 player.translateX(-2); // går 2 pixels til venstre
+                getGameState().increment("pixelsMoved", +2);
             }
         }, KeyCode.LEFT);
 
@@ -62,6 +64,7 @@ public class LabyrintSpilApp extends GameApplication {
             @Override
             protected void onAction() {
                 player.translateY(-2); // går 2 pixels op
+                getGameState().increment("pixelsMoved", +2);
             }
         }, KeyCode.UP);
 
@@ -69,8 +72,13 @@ public class LabyrintSpilApp extends GameApplication {
             @Override
             protected void onAction() {
                 player.translateY(2); // går 2 pixels ned
+                getGameState().increment("pixelsMoved", +2);
             }
         }, KeyCode.DOWN);
+    }
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("pixelsMoved", 0);
     }
 
     // Her kan man tilføje tekst
@@ -80,8 +88,14 @@ public class LabyrintSpilApp extends GameApplication {
         level1Text.setTranslateX(15); // dens x position
         level1Text.setTranslateY(35); // dens y position
         level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
+            Text textPixels = new Text();
+            textPixels.setTranslateX(200); // x = 50
+            textPixels.setTranslateY(35); // y = 100
 
-        getGameScene().addUINode(level1Text); // add to the scene
+            textPixels.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
+
+            getGameScene().addUINode(level1Text); // add to the scene
+            getGameScene().addUINode(textPixels);
     }
 
     public static void main(String[] args) {
