@@ -2,6 +2,7 @@
 package com.erikogniels.labyrintspil;
 
 //Imports som skal bruges til FXGL
+
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -15,6 +16,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 import java.util.Map;
 
 public class LabyrintSpilApp extends GameApplication {
@@ -76,6 +78,7 @@ public class LabyrintSpilApp extends GameApplication {
             }
         }, KeyCode.DOWN);
     }
+
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("pixelsMoved", 0);
@@ -88,14 +91,15 @@ public class LabyrintSpilApp extends GameApplication {
         level1Text.setTranslateX(15); // dens x position
         level1Text.setTranslateY(35); // dens y position
         level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
-            Text textPixels = new Text();
-            textPixels.setTranslateX(200); // x = 200
-            textPixels.setTranslateY(35); // y = 35
 
-            textPixels.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
+        Text skridtTaeller = new Text();
+        skridtTaeller.setTranslateX(200); // x = 200
+        skridtTaeller.setTranslateY(35); // y = 35
 
-            getGameScene().addUINode(level1Text); // add to the scene
-            getGameScene().addUINode(textPixels);
+        skridtTaeller.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
+
+        getGameScene().addUINode(level1Text); // add to the scene
+        getGameScene().addUINode(skridtTaeller);
     }
 
     public static void main(String[] args) {
