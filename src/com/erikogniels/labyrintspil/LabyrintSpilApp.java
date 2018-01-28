@@ -89,8 +89,8 @@ public class LabyrintSpilApp extends GameApplication {
         level1Text.setTranslateY(35); // dens y position
         level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
             Text textPixels = new Text();
-            textPixels.setTranslateX(200); // x = 50
-            textPixels.setTranslateY(35); // y = 100
+            textPixels.setTranslateX(200); // x = 200
+            textPixels.setTranslateY(35); // y = 35
 
             textPixels.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
 
