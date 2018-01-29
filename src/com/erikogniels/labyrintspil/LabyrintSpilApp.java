@@ -94,12 +94,13 @@ public class LabyrintSpilApp extends GameApplication {
         level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
 
         Text skridtTaeller = new Text();
-        skridtTaeller.setTranslateX(200); // x = 200
-        skridtTaeller.setTranslateY(35); // y = 35
+        skridtTaeller.setTranslateX(200); // dens x position
+        skridtTaeller.setTranslateY(35); // dens y position
 
         skridtTaeller.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
 
-        getGameScene().addUINode(level1Text); // add to the scene
+        // tilføjer vores tekst objekter til spillet
+        getGameScene().addUINode(level1Text);
         getGameScene().addUINode(skridtTaeller);
     }
 
