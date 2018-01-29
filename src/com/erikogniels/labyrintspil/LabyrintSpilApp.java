@@ -6,8 +6,10 @@ package com.erikogniels.labyrintspil;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.component.CollidableComponent;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.settings.GameSettings;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -32,14 +34,47 @@ public class LabyrintSpilApp extends GameApplication {
     }
 
     private Entity player;
+    private Entity wall;
 
     // Her kan man sætte ting som skal være klare inden spillet starter
     @Override
     protected void initGame() {
         player = Entities.builder()
+                .type(EntityType.PLAYER)
                 .at(350, 350)
-                .viewFromNode(new Circle(10, Color.BLUE))
+                .viewFromNodeWithBBox(new Circle(10, Color.BLUE))
+                .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
+
+        wall = Entities.builder()
+                .type(EntityType.WALL)
+                .at(300,200)
+               .viewFromNodeWithBBox(new Rectangle(300,50, Color.BLACK))
+                .with(new CollidableComponent(true))
+               .buildAndAttach(getGameWorld());
+    }
+
+    // Her kan man tilføje fysik til spillet
+    @Override
+    protected void initPhysics() {
+        // Håndtere kolisioner mellem en Player type og Wall type
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
+            @Override
+            protected void onCollision(Entity player, Entity wall) {
+                if (getInput().isHeld(KeyCode.RIGHT)) {
+                    player.translateX(-2);
+                }
+                if (getInput().isHeld(KeyCode.LEFT)) {
+                    player.translateX(2);
+                }
+                if (getInput().isHeld(KeyCode.UP)) {
+                    player.translateY(2);
+                }
+                if (getInput().isHeld(KeyCode.DOWN)) {
+                    player.translateY(-2);
+                }
+            }
+        });
     }
 
     // Her kan man indsætte kode til at håndtere input
