@@ -2,7 +2,7 @@ package com.erikogniels.labyrintspil;
 
 import com.almasb.fxgl.settings.GameSettings;
 
-public class InitSettings {
+public class InitSettings extends LabyrintSpilApp {
 
     // Default no-arg constructor
     InitSettings() {
