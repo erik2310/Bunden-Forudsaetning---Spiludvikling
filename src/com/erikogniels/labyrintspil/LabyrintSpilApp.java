@@ -24,10 +24,11 @@ public class LabyrintSpilApp extends GameApplication {
     // Her kan man ændre indstillinger for spillet
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setWidth(700);
-        settings.setHeight(700);
-        settings.setTitle("Labyrint Spil");
-        settings.setVersion("1.0");
+        // Laver et objekt af klassen InitSettings
+        InitSettings initSettings = new InitSettings();
+
+        // Får initSettings fra InitSettings klassens getInitSettings metode
+        initSettings.getInitSettings(settings);
     }
 
     private Entity player;
