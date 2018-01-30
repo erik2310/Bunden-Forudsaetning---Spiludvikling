@@ -48,10 +48,16 @@ public class LabyrintSpilApp extends GameApplication {
 
         wall = Entities.builder()
                 .type(EntityType.WALL)
-                .at(300,200)
-               .viewFromNodeWithBBox(new Rectangle(300,50, Color.BLACK))
+                .at(1,50)
+               .viewFromNodeWithBBox(new Rectangle(698,5, Color.BLACK))
                 .with(new CollidableComponent(true))
                .buildAndAttach(getGameWorld());
+        Entities.builder()
+                .type(EntityType.WALL)
+                .at(1, 680)
+                .viewFromNodeWithBBox(new Rectangle(698, 5, Color.BLACK))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
     }
 
     // Her kan man tilføje fysik til spillet
