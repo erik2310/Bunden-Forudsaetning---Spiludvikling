@@ -37,6 +37,7 @@ public class LabyrintSpilApp extends GameApplication {
         initSettings.getInitSettings(settings);
     }
 
+    // Deklaration af entity's
     private Entity player;
     private Entity wall;
 
@@ -59,11 +60,12 @@ public class LabyrintSpilApp extends GameApplication {
 
                 Entities.builder()
                 .type(EntityType.WALL)
-                .at(1, 680)
-                .viewFromNodeWithBBox(new Rectangle(698, 5, Color.BLACK))
+                .at(1, 1)
+                .viewFromNodeWithBBox(new Rectangle(5, 698, Color.BLACK))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
+        // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
             if (now % 100 == 0) {
                 getAudioPlayer().playSound("drop.wav");
@@ -74,6 +76,7 @@ public class LabyrintSpilApp extends GameApplication {
     // Her kan man tilføje fysik til spillet
     @Override
     protected void initPhysics() {
+
         // Håndtere kolisioner mellem en Player type og Wall type
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
             @Override
@@ -131,12 +134,12 @@ public class LabyrintSpilApp extends GameApplication {
             }
         }, KeyCode.DOWN);
 
-        input.addAction(new UserAction("Play Sound") {
+/*        input.addAction(new UserAction("Play Sound") {
             @Override
             protected void onActionBegin() {
                 getAudioPlayer().playSound("drop.wav");
             }
-        }, KeyCode.F);
+        }, KeyCode.F); */
     }
 
     @Override
@@ -144,7 +147,7 @@ public class LabyrintSpilApp extends GameApplication {
         vars.put("pixelsMoved", 0);
     }
 
-    // Her kan man tilføje tekst
+    // Her kan man tilføje tekst elementer
     @Override
     protected void initUI() {
         Text level1Text = new Text("Level 1"); // laver en tekst
