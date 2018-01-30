@@ -14,6 +14,8 @@ public class InitSettings extends LabyrintSpilApp {
         settings.setHeight(700);
         settings.setTitle("Labyrint Spil");
         settings.setVersion("1.0");
+        settings.setIntroEnabled(false); // turn off intro
+        settings.setMenuEnabled(false);  // turn off menus
     }
 
 }
