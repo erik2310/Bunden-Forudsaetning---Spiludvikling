@@ -39,7 +39,8 @@ public class LabyrintSpilApp extends GameApplication {
 
     // Deklaration af entity's
     private Entity player;
-    private Entity wall;
+    private Entity overstePanelVaeg;
+    private Entity wall[][] = new Entity[30][30];
 
     // Her kan man sætte ting som skal være klare inden spillet starter
     @Override
@@ -51,19 +52,28 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        wall = Entities.builder()
+        overstePanelVaeg = Entities.builder()
                 .type(EntityType.WALL)
-                .at(1,50)
-               .viewFromNodeWithBBox(new Rectangle(698,5, Color.BLACK))
+                .at(0,50)
+               .viewFromNodeWithBBox(new Rectangle(700,5, Color.BLACK))
                 .with(new CollidableComponent(true))
                .buildAndAttach(getGameWorld());
 
-                Entities.builder()
-                .type(EntityType.WALL)
-                .at(1, 1)
-                .viewFromNodeWithBBox(new Rectangle(5, 698, Color.BLACK))
-                .with(new CollidableComponent(true))
-                .buildAndAttach(getGameWorld());
+        // fylder et område ud med rektangler
+        for (int y = 65, arrayY = 0; y < 680; y = y + 31, arrayY++) {
+            for (int x = 9, arrayX = 0; x < 680; x = x + 31, arrayX++) {
+             wall[arrayX][arrayY] =  Entities.builder()
+                        .type(EntityType.WALL)
+                        .at(x, y)
+                        .viewFromNodeWithBBox(new Rectangle(30, 30, Color.BLACK))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+            }
+        }
+
+        // fjerner en rektangel på en x og y koordinat
+        wall[0][5].removeFromWorld();
+        wall[1][5].removeFromWorld();
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
