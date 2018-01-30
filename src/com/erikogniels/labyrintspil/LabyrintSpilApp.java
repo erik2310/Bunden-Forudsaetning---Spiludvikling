@@ -3,6 +3,7 @@ package com.erikogniels.labyrintspil;
 
 //Imports som skal bruges til FXGL
 
+import com.almasb.fxgl.ai.pathfinding.maze.Maze;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -11,10 +12,13 @@ import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.settings.GameSettings;
+import com.almasb.fxgl.texture.Texture;
+import javafx.scene.chart.LineChart;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -52,12 +56,19 @@ public class LabyrintSpilApp extends GameApplication {
                .viewFromNodeWithBBox(new Rectangle(698,5, Color.BLACK))
                 .with(new CollidableComponent(true))
                .buildAndAttach(getGameWorld());
-        Entities.builder()
+
+                Entities.builder()
                 .type(EntityType.WALL)
                 .at(1, 680)
                 .viewFromNodeWithBBox(new Rectangle(698, 5, Color.BLACK))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
+
+        getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
+            if (now % 100 == 0) {
+                getAudioPlayer().playSound("drop.wav");
+            }
+        });
     }
 
     // Her kan man tilføje fysik til spillet
@@ -119,6 +130,13 @@ public class LabyrintSpilApp extends GameApplication {
                 getGameState().increment("pixelsMoved", +2);
             }
         }, KeyCode.DOWN);
+
+        input.addAction(new UserAction("Play Sound") {
+            @Override
+            protected void onActionBegin() {
+                getAudioPlayer().playSound("drop.wav");
+            }
+        }, KeyCode.F);
     }
 
     @Override
@@ -139,10 +157,16 @@ public class LabyrintSpilApp extends GameApplication {
         skridtTaeller.setTranslateY(35); // dens y position
 
         skridtTaeller.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
+/*
+        Texture mazeTexture = getAssetLoader().loadTexture("Maze3D.gif");
+        mazeTexture.setTranslateX(45);
+        mazeTexture.setTranslateY(150);
+*/
 
         // tilføjer vores tekst objekter til spillet
         getGameScene().addUINode(level1Text);
         getGameScene().addUINode(skridtTaeller);
+        //getGameScene().addUINode(mazeTexture);
     }
 
     public static void main(String[] args) {
