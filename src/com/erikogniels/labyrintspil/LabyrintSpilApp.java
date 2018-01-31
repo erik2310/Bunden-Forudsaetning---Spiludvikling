@@ -72,7 +72,7 @@ public class LabyrintSpilApp extends GameApplication {
             }
         }
 
-        // fjerner nogen rektangeler på en x og y koordinat
+        // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
         wall[0][14].removeFromWorld();
         wall[1][14].removeFromWorld();
         wall[2][14].removeFromWorld();
@@ -86,8 +86,86 @@ public class LabyrintSpilApp extends GameApplication {
         wall[3][11].removeFromWorld();
         wall[3][10].removeFromWorld();
         wall[3][9].removeFromWorld();
-
-
+        wall[2][9].removeFromWorld();
+        wall[1][9].removeFromWorld();
+        wall[1][8].removeFromWorld();
+        wall[1][7].removeFromWorld();
+        wall[2][7].removeFromWorld();
+        wall[3][7].removeFromWorld();
+        wall[4][7].removeFromWorld();
+        wall[4][6].removeFromWorld();
+        wall[5][6].removeFromWorld();
+        wall[6][6].removeFromWorld();
+        wall[6][7].removeFromWorld();
+        wall[6][8].removeFromWorld();
+        wall[6][9].removeFromWorld();
+        wall[5][9].removeFromWorld();
+        wall[5][10].removeFromWorld();
+        wall[5][11].removeFromWorld();
+        wall[5][12].removeFromWorld();
+        wall[5][13].removeFromWorld();
+        wall[6][5].removeFromWorld();
+        wall[6][4].removeFromWorld();
+        wall[5][4].removeFromWorld();
+        wall[4][4].removeFromWorld();
+        wall[3][4].removeFromWorld();
+        wall[2][4].removeFromWorld();
+        wall[1][4].removeFromWorld();
+        wall[1][3].removeFromWorld();
+        wall[1][2].removeFromWorld();
+        wall[1][1].removeFromWorld();
+        wall[2][1].removeFromWorld();
+        wall[3][1].removeFromWorld();
+        wall[4][1].removeFromWorld();
+        wall[5][1].removeFromWorld();
+        wall[6][1].removeFromWorld();
+        wall[7][1].removeFromWorld();
+        wall[7][2].removeFromWorld();
+        wall[7][3].removeFromWorld();
+        wall[8][3].removeFromWorld();
+        // bruger for loops til at tegne de lige veje
+        for (int i = 4; i < 17; i++) {
+            wall[8][i].removeFromWorld();
+        }
+        for (int i = 7; i > 0; i--) {
+            wall[i][16].removeFromWorld();
+        }
+        wall[1][17].removeFromWorld();
+        wall[1][18].removeFromWorld();
+        wall[9][9].removeFromWorld();
+        for (int i = 2; i < 11; i++) {
+            wall[i][18].removeFromWorld();
+        }
+        wall[10][17].removeFromWorld();
+        wall[10][16].removeFromWorld();
+        wall[11][16].removeFromWorld();
+        wall[12][16].removeFromWorld();
+        wall[12][17].removeFromWorld();
+        wall[12][18].removeFromWorld();
+        wall[13][18].removeFromWorld();
+        wall[14][18].removeFromWorld();
+        for (int i = 17; i > 9; i--) {
+            wall[14][i].removeFromWorld();
+        }
+        wall[13][14].removeFromWorld();
+        wall[12][14].removeFromWorld();
+        wall[11][14].removeFromWorld();
+        wall[10][14].removeFromWorld();
+        wall[10][13].removeFromWorld();
+        wall[10][12].removeFromWorld();
+        wall[11][12].removeFromWorld();
+        wall[11][11].removeFromWorld();
+        wall[11][10].removeFromWorld();
+        wall[10][10].removeFromWorld();
+        wall[13][10].removeFromWorld();
+        wall[13][9].removeFromWorld();
+        wall[12][9].removeFromWorld();
+        wall[12][8].removeFromWorld();
+        wall[11][8].removeFromWorld();
+        wall[10][8].removeFromWorld();
+        for (int i = 7; i > 0; i--) {
+            wall[10][i].removeFromWorld();
+        }
 
 
         // Afspiller en lyd når man bevæger sig
