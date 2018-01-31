@@ -72,6 +72,19 @@ public class LabyrintSpilApp extends GameApplication {
             }
         }
 
+        // fjerner de rektangler som vi ikke skal bruge så der bliver tegnet en vej i labyrinten
+        removeLevel1Walls();
+
+        // Afspiller en lyd når man bevæger sig
+        getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
+            if (now % 100 == 0) { //Bib lyd for hver 100 pixelsMoved
+                getAudioPlayer().playSound("drop.wav");
+            }
+        });
+    }
+
+    private void removeLevel1Walls() {
+
         // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
         wall[0][14].removeFromWorld();
         wall[1][14].removeFromWorld();
@@ -207,14 +220,7 @@ public class LabyrintSpilApp extends GameApplication {
             wall[i][17].removeFromWorld();
         }
 
-        // Afspiller en lyd når man bevæger sig
-        getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
-            if (now % 100 == 0) { //Bib lyd for hver 100 pixelsMoved
-                getAudioPlayer().playSound("drop.wav");
-            }
-        });
     }
-
 
     // Her kan man tilføje fysik til spillet
     @Override
