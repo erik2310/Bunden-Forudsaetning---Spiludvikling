@@ -166,7 +166,46 @@ public class LabyrintSpilApp extends GameApplication {
         for (int i = 7; i > 0; i--) {
             wall[10][i].removeFromWorld();
         }
-
+        wall[11][1].removeFromWorld();
+        wall[12][1].removeFromWorld();
+        wall[13][1].removeFromWorld();
+        wall[14][1].removeFromWorld();
+        wall[12][2].removeFromWorld();
+        wall[12][3].removeFromWorld();
+        wall[12][4].removeFromWorld();
+        wall[12][5].removeFromWorld();
+        wall[11][5].removeFromWorld();
+        for (int i = 2; i < 8; i++) {
+            wall[14][i].removeFromWorld();
+        }
+        wall[15][7].removeFromWorld();
+        wall[16][7].removeFromWorld();
+        wall[17][7].removeFromWorld();
+        wall[17][6].removeFromWorld();
+        wall[17][5].removeFromWorld();
+        wall[16][4].removeFromWorld();
+        wall[16][3].removeFromWorld();
+        wall[16][2].removeFromWorld();
+        for (int i = 17; i < 22; i++) {
+            wall[i][2].removeFromWorld();
+        }
+        wall[16][8].removeFromWorld();
+        wall[16][9].removeFromWorld();
+        wall[16][10].removeFromWorld();
+        wall[17][10].removeFromWorld();
+        wall[17][11].removeFromWorld();
+        wall[17][12].removeFromWorld();
+        wall[18][12].removeFromWorld();
+        wall[18][13].removeFromWorld();
+        wall[18][14].removeFromWorld();
+        wall[17][14].removeFromWorld();
+        wall[16][14].removeFromWorld();
+        wall[16][15].removeFromWorld();
+        wall[16][16].removeFromWorld();
+        wall[16][17].removeFromWorld();
+        for (int i = 17; i < 22; i++) {
+            wall[i][17].removeFromWorld();
+        }
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
