@@ -72,9 +72,23 @@ public class LabyrintSpilApp extends GameApplication {
             }
         }
 
-        // fjerner en rektangel på en x og y koordinat
-        wall[0][5].removeFromWorld();
-        wall[1][5].removeFromWorld();
+        // fjerner nogen rektangeler på en x og y koordinat
+        wall[0][14].removeFromWorld();
+        wall[1][14].removeFromWorld();
+        wall[2][14].removeFromWorld();
+        wall[3][14].removeFromWorld();
+        wall[4][14].removeFromWorld();
+        wall[5][14].removeFromWorld();
+        wall[1][13].removeFromWorld();
+        wall[1][12].removeFromWorld();
+        wall[1][11].removeFromWorld();
+        wall[2][11].removeFromWorld();
+        wall[3][11].removeFromWorld();
+        wall[3][10].removeFromWorld();
+        wall[3][9].removeFromWorld();
+
+
+
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
