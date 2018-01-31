@@ -1,5 +1,3 @@
-package com.erikogniels.labyrintspil;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -19,7 +17,7 @@ public class MapTileMaker extends JPanel {
                     MazeMapMaker.map[x][y] = 1;
                 }
                 if(e.getButton() == MouseEvent.BUTTON3){
-                    setBackground(Color.GRAY);
+                    setBackground(Color.BLACK);
                     MazeMapMaker.map[x][y] = 0;
                 }
             }

@@ -1,5 +1,3 @@
-package com.erikogniels.labyrintspil;
-
 import javax.swing.*;
 import java.awt.*;
 

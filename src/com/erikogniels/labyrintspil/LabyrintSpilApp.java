@@ -52,6 +52,7 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
+
         overstePanelVaeg = Entities.builder()
                 .type(EntityType.WALL)
                 .at(0,50)
@@ -77,11 +78,12 @@ public class LabyrintSpilApp extends GameApplication {
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
-            if (now % 100 == 0) {
+            if (now % 100 == 0) { //Bib lyd for hver 100 pixelsMoved
                 getAudioPlayer().playSound("drop.wav");
             }
         });
     }
+
 
     // Her kan man tilføje fysik til spillet
     @Override
