@@ -47,7 +47,7 @@ public class LabyrintSpilApp extends GameApplication {
     protected void initGame() {
         player = Entities.builder()
                 .type(EntityType.PLAYER)
-                .at(350, 350)
+                .at(10, 505)
                 .viewFromNodeWithBBox(new Circle(10, Color.BLUE))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
