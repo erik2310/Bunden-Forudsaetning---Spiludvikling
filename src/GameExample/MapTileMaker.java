@@ -1,8 +1,13 @@
+package GameExample;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * @author Niels on 29-01-2018.
+ */
 public class MapTileMaker extends JPanel {
     int x, y;
 
@@ -17,7 +22,7 @@ public class MapTileMaker extends JPanel {
                     MazeMapMaker.map[x][y] = 1;
                 }
                 if(e.getButton() == MouseEvent.BUTTON3){
-                    setBackground(Color.BLACK);
+                    setBackground(Color.GRAY);
                     MazeMapMaker.map[x][y] = 0;
                 }
             }

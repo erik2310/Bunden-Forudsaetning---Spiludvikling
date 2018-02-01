@@ -1,3 +1,5 @@
+package GameExample;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -8,6 +10,9 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * @author Niels on 29-01-2018.
+ */
 public class MazeMapMaker extends JFrame {
     static int rows = 20;
     static int columns = 20;

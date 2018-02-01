@@ -1,3 +1,5 @@
+package GameExample;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -6,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
+
 
 public class Maze extends JFrame {
     public static int rows = 20;

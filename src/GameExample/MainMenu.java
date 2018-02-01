@@ -1,12 +1,10 @@
+package GameExample;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
-
-/**
- * @author Niels on 29-01-2018.
- */
 
 
 public class MainMenu {
@@ -26,7 +24,7 @@ public class MainMenu {
     int HEIGHT = 530;
 
 
-    //    @SuppressWarnings("Since15")
+//    @SuppressWarnings("Since15")
     public MainMenu() {
         //Load map list
         getMapList();

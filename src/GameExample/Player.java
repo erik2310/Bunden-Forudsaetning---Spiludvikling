@@ -1,7 +1,11 @@
+package GameExample;
+
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Player extends JPanel {
+
+public class Player extends JPanel{
     int x, y;
 
     public Player() {

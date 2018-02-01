@@ -1,6 +1,8 @@
+package GameExample;
+
 import javax.swing.*;
 
-public class Tile extends JPanel {
+public class Tile extends JPanel{
     int x, y;
     boolean isWall = true;
 
