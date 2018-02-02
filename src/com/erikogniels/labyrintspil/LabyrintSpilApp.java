@@ -79,7 +79,7 @@ public class LabyrintSpilApp extends GameApplication {
 
         // den nedeste væg ved slutningen af labyrinten
         slutWall[1] = Entities.builder()
-                .type(EntityType.WALL)
+                .type(EntityType.SLUTWALLLVL1)
                 .at(690, 580)
                 .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
                 .with(new CollidableComponent(true))
@@ -102,7 +102,7 @@ public class LabyrintSpilApp extends GameApplication {
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
-            if (now % 100 == 0) { //Bib lyd for hver 100 pixelsMoved
+            if (now % 70 == 0) { //Bib lyd for hver 100 pixelsMoved
                 getAudioPlayer().playSound("drop.wav");
             }
         });
@@ -267,6 +267,14 @@ public class LabyrintSpilApp extends GameApplication {
                 if (getInput().isHeld(KeyCode.DOWN)) {
                     player.translateY(-2);
                 }
+            }
+        });
+
+        // Håndtere kolisioner mellem en Player type og SlutWallLVL1 type
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.SLUTWALLLVL1) {
+            @Override
+            protected void onCollision(Entity player, Entity slutWall1) {
+
             }
         });
     }
