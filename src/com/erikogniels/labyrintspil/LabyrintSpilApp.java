@@ -41,11 +41,13 @@ public class LabyrintSpilApp extends GameApplication {
     private Entity player;
     private Entity overstePanelVaeg;
     private Entity startWall;
+    private Entity slutWall[] = new Entity[2];
     private Entity wall[][] = new Entity[30][30];
 
     // Her kan man sætte ting som skal være klare inden spillet starter
     @Override
     protected void initGame() {
+
         player = Entities.builder()
                 .type(EntityType.PLAYER)
                 .at(12, 505)
@@ -63,6 +65,22 @@ public class LabyrintSpilApp extends GameApplication {
         startWall = Entities.builder()
                 .type(EntityType.WALL)
                 .at(5, 488)
+                .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+
+        // den øverste væg ved slutningen af labyrinten
+        slutWall[0] = Entities.builder()
+                .type(EntityType.WALL)
+                .at(690, 118)
+                .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+
+        // den nedeste væg ved slutningen af labyrinten
+        slutWall[1] = Entities.builder()
+                .type(EntityType.WALL)
+                .at(690, 580)
                 .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
