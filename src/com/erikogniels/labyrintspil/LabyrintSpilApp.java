@@ -98,7 +98,7 @@ public class LabyrintSpilApp extends GameApplication {
         }
 
         // fjerner de rektangler som vi ikke skal bruge så der bliver tegnet en vej i labyrinten
-        removeLevel1Walls();
+        removeLevel2Walls();
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
@@ -247,6 +247,105 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
+    private void removeLevel2Walls() {
+
+        // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
+        wall[0][9].removeFromWorld();
+        wall[1][9].removeFromWorld();
+        wall[1][10].removeFromWorld();
+        wall[2][10].removeFromWorld();
+        wall[3][10].removeFromWorld();
+        wall[3][9].removeFromWorld();
+        wall[3][8].removeFromWorld();
+        wall[3][7].removeFromWorld();
+        wall[2][7].removeFromWorld();
+        wall[1][7].removeFromWorld();
+        wall[1][6].removeFromWorld();
+        wall[1][5].removeFromWorld();
+        wall[2][5].removeFromWorld();
+        wall[3][5].removeFromWorld();
+        wall[4][5].removeFromWorld();
+        wall[5][5].removeFromWorld();
+        for (int i = 6; i < 15; i++) {
+            wall[5][i].removeFromWorld();
+        }
+        wall[4][12].removeFromWorld();
+        wall[3][12].removeFromWorld();
+        wall[2][12].removeFromWorld();
+        wall[1][12].removeFromWorld();
+        wall[1][13].removeFromWorld();
+        wall[1][14].removeFromWorld();
+        wall[1][15].removeFromWorld();
+        wall[2][15].removeFromWorld();
+        wall[3][15].removeFromWorld();
+        wall[4][15].removeFromWorld();
+        wall[4][16].removeFromWorld();
+        wall[5][16].removeFromWorld();
+        wall[6][16].removeFromWorld();
+        wall[6][15].removeFromWorld();
+        wall[6][14].removeFromWorld();
+        wall[5][17].removeFromWorld();
+        for (int i = 1; i < 9; i++) {
+            wall[i][18].removeFromWorld();
+        }
+        wall[8][17].removeFromWorld();
+        wall[8][16].removeFromWorld();
+        wall[8][15].removeFromWorld();
+        wall[8][14].removeFromWorld();
+        wall[8][13].removeFromWorld();
+        wall[8][12].removeFromWorld();
+        wall[7][12].removeFromWorld();
+        wall[7][11].removeFromWorld();
+        wall[7][10].removeFromWorld();
+        wall[7][9].removeFromWorld();
+        wall[7][8].removeFromWorld();
+        wall[7][7].removeFromWorld();
+        wall[8][7].removeFromWorld();
+        wall[8][6].removeFromWorld();
+        wall[8][5].removeFromWorld();
+        wall[8][4].removeFromWorld();
+        wall[7][4].removeFromWorld();
+        wall[6][4].removeFromWorld();
+        wall[6][3].removeFromWorld();
+        wall[5][3].removeFromWorld();
+        wall[4][3].removeFromWorld();
+        wall[3][3].removeFromWorld();
+        wall[2][3].removeFromWorld();
+        wall[1][3].removeFromWorld();
+        wall[1][2].removeFromWorld();
+        wall[1][1].removeFromWorld();
+        wall[2][1].removeFromWorld();
+        wall[3][1].removeFromWorld();
+        wall[4][1].removeFromWorld();
+        wall[5][1].removeFromWorld();
+        wall[6][1].removeFromWorld();
+        wall[7][1].removeFromWorld();
+        wall[7][2].removeFromWorld();
+        wall[8][2].removeFromWorld();
+        wall[9][2].removeFromWorld();
+        wall[10][2].removeFromWorld();
+        wall[10][1].removeFromWorld();
+        for (int i = 11; i < 21; i++) {
+            wall[i][1].removeFromWorld();
+        }
+
+    }
+
+    private void returnAllWallsToTheGame() {
+
+        // Tilføjer alle walls tilbage igen
+        for (int y = 0; y < 20; y++) {
+            for (int x = 0; x < 22; x++) {
+                try {
+                    getGameWorld().addEntity(wall[x][y]);
+                } catch (Exception e) {
+                    System.out.println("Entity is already attached to world");
+                }
+            }
+        }
+
+    }
+
     // Her kan man tilføje fysik til spillet
     @Override
     protected void initPhysics() {
@@ -274,6 +373,14 @@ public class LabyrintSpilApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.SLUTWALLLVL1) {
             @Override
             protected void onCollision(Entity player, Entity slutWall1) {
+
+                // fjerner spilleren fra verdenen
+                player.removeFromWorld();
+
+                // Tilføjer alle walls tilbage igen
+                returnAllWallsToTheGame();
+
+
 
             }
         });
