@@ -55,15 +55,15 @@ public class LabyrintSpilApp extends GameApplication {
 
         overstePanelVaeg = Entities.builder()
                 .type(EntityType.WALL)
-                .at(0,50)
-               .viewFromNodeWithBBox(new Rectangle(700,5, Color.BLACK))
+                .at(0, 50)
+                .viewFromNodeWithBBox(new Rectangle(700, 5, Color.BLACK))
                 .with(new CollidableComponent(true))
-               .buildAndAttach(getGameWorld());
+                .buildAndAttach(getGameWorld());
 
         // fylder et område ud med rektangler
         for (int y = 65, arrayY = 0; y < 680; y = y + 31, arrayY++) {
             for (int x = 9, arrayX = 0; x < 680; x = x + 31, arrayX++) {
-             wall[arrayX][arrayY] =  Entities.builder()
+                wall[arrayX][arrayY] = Entities.builder()
                         .type(EntityType.WALL)
                         .at(x, y)
                         .viewFromNodeWithBBox(new Rectangle(30, 30, Color.BLACK))
