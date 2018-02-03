@@ -98,7 +98,7 @@ public class LabyrintSpilApp extends GameApplication {
         }
 
         // fjerner de rektangler som vi ikke skal bruge så der bliver tegnet en vej i labyrinten
-        removeLevel2Walls();
+        removeLevel1Walls();
 
         // Afspiller en lyd når man bevæger sig
         getGameState().<Integer>addListener("pixelsMoved", (prev, now) -> {
@@ -325,22 +325,105 @@ public class LabyrintSpilApp extends GameApplication {
         wall[9][2].removeFromWorld();
         wall[10][2].removeFromWorld();
         wall[10][1].removeFromWorld();
-        for (int i = 11; i < 21; i++) {
+        for (int i = 11; i < 19; i++) {
             wall[i][1].removeFromWorld();
         }
+        wall[10][3].removeFromWorld();
+        wall[10][4].removeFromWorld();
+        wall[10][5].removeFromWorld();
+        wall[11][5].removeFromWorld();
+        wall[12][5].removeFromWorld();
+        wall[13][5].removeFromWorld();
+        wall[14][4].removeFromWorld();
+        wall[14][3].removeFromWorld();
+        wall[14][2].removeFromWorld();
+        wall[15][4].removeFromWorld();
+        wall[15][5].removeFromWorld();
+        wall[16][5].removeFromWorld();
+        wall[17][5].removeFromWorld();
+        wall[18][5].removeFromWorld();
+        wall[18][4].removeFromWorld();
+        wall[18][3].removeFromWorld();
+        wall[18][2].removeFromWorld();
+        wall[13][6].removeFromWorld();
+        wall[13][7].removeFromWorld();
+        wall[12][7].removeFromWorld();
+        wall[11][7].removeFromWorld();
+        wall[10][7].removeFromWorld();
+        wall[10][8].removeFromWorld();
+        wall[9][8].removeFromWorld();
+        wall[9][9].removeFromWorld();
+        wall[9][10].removeFromWorld();
+        wall[9][11].removeFromWorld();
+        wall[10][11].removeFromWorld();
+        wall[10][12].removeFromWorld();
+        wall[10][13].removeFromWorld();
+        wall[10][14].removeFromWorld();
+        wall[11][14].removeFromWorld();
+        wall[11][15].removeFromWorld();
+        wall[11][16].removeFromWorld();
+        wall[10][16].removeFromWorld();
+        wall[10][17].removeFromWorld();
+        wall[10][18].removeFromWorld();
+        for (int i = 11; i < 19; i++) {
+            wall[i][18].removeFromWorld();
+        }
+        wall[13][17].removeFromWorld();
+        wall[13][16].removeFromWorld();
+        wall[13][15].removeFromWorld();
+        wall[13][14].removeFromWorld();
+        wall[13][13].removeFromWorld();
+        wall[12][13].removeFromWorld();
+        wall[12][12].removeFromWorld();
+        wall[12][11].removeFromWorld();
+        wall[12][10].removeFromWorld();
+        wall[12][9].removeFromWorld();
+        wall[13][9].removeFromWorld();
+        wall[14][9].removeFromWorld();
+        wall[14][8].removeFromWorld();
+        wall[15][8].removeFromWorld();
+        wall[15][7].removeFromWorld();
+        wall[15][6].removeFromWorld();
+        wall[18][17].removeFromWorld();
+        wall[18][16].removeFromWorld();
+        wall[17][16].removeFromWorld();
+        wall[16][16].removeFromWorld();
+        wall[15][16].removeFromWorld();
+        wall[15][15].removeFromWorld();
+        wall[15][14].removeFromWorld();
+        wall[16][14].removeFromWorld();
+        wall[17][14].removeFromWorld();
+        wall[18][14].removeFromWorld();
+        wall[18][13].removeFromWorld();
+        wall[18][12].removeFromWorld();
+        wall[17][12].removeFromWorld();
+        wall[16][12].removeFromWorld();
+        wall[15][12].removeFromWorld();
+        wall[15][11].removeFromWorld();
+        wall[15][10].removeFromWorld();
+        wall[16][10].removeFromWorld();
+        wall[17][10].removeFromWorld();
+        wall[17][9].removeFromWorld();
+        wall[17][8].removeFromWorld();
+        wall[17][7].removeFromWorld();
+        wall[18][7].removeFromWorld();
+        wall[19][7].removeFromWorld();
+        wall[20][7].removeFromWorld();
+        wall[21][7].removeFromWorld();
 
     }
 
     private void returnAllWallsToTheGame() {
 
-        // Tilføjer alle walls tilbage igen
-        for (int y = 0; y < 20; y++) {
-            for (int x = 0; x < 22; x++) {
-                try {
-                    getGameWorld().addEntity(wall[x][y]);
-                } catch (Exception e) {
-                    System.out.println("Entity is already attached to world");
-                }
+        // fylder et område ud med rektangler
+        for (int y = 65, arrayY = 0; y < 680; y = y + 31, arrayY++) {
+            for (int x = 9, arrayX = 0; x < 680; x = x + 31, arrayX++) {
+                wall[arrayX][arrayY] = Entities.builder()
+                        .type(EntityType.WALL)
+                        .at(x, y)
+                        .viewFromNodeWithBBox(new Rectangle(30, 30, Color.BLACK))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
             }
         }
 
@@ -372,15 +455,55 @@ public class LabyrintSpilApp extends GameApplication {
         // Håndtere kolisioner mellem en Player type og SlutWallLVL1 type
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.SLUTWALLLVL1) {
             @Override
-            protected void onCollision(Entity player, Entity slutWall1) {
+            protected void onCollision(Entity player1, Entity slutWall1) {
 
-                // fjerner spilleren fra verdenen
+                // fjerner spilleren fra verdenen i level 1
                 player.removeFromWorld();
+
+                // fjerner startWall i level 1
+                startWall.removeFromWorld();
+
+                // fjerner slutWall[0] i level 1
+                slutWall[0].removeFromWorld();
+
+                // fjerner slutWall[1] i level 1
+                slutWall[1].removeFromWorld();
+
+                // fjerner walls til level 2
+                removeLevel2Walls();
 
                 // Tilføjer alle walls tilbage igen
                 returnAllWallsToTheGame();
 
+                // fjerner walls til level 2
+                removeLevel2Walls();
 
+                // skaber en ny startWall til level 2
+                startWall = Entities.builder()
+                        .type(EntityType.WALL)
+                        .at(5, 333)
+                        .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                // skaber en ny spiller til level 2
+                player = Entities.builder()
+                        .type(EntityType.PLAYER)
+                        .at(12, 350)
+                        .viewFromNodeWithBBox(new Circle(10, Color.BLUE))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                // skaber en ny slutWall[1] til level 2
+                slutWall[1] = Entities.builder()
+                        .type(EntityType.SLUTWALLLVL2)
+                        .at(690, 272)
+                        .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                // sætter level teksten til Level 2
+                level1Text.setText("Level 2");
 
             }
         });
@@ -436,10 +559,12 @@ public class LabyrintSpilApp extends GameApplication {
         vars.put("pixelsMoved", 0);
     }
 
+    private Text level1Text = new Text("Level 1"); // laver en tekst til vores level numre
+
     // Her kan man tilføje tekst elementer
     @Override
     protected void initUI() {
-        Text level1Text = new Text("Level 1"); // laver en tekst
+
         level1Text.setTranslateX(15); // dens x position
         level1Text.setTranslateY(35); // dens y position
         level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
