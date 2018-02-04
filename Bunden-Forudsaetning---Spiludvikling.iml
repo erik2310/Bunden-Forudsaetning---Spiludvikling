@@ -17,5 +17,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="fxgl-0.4.1-uber" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/FXGL library/fxgl-0.4.2-uber.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
