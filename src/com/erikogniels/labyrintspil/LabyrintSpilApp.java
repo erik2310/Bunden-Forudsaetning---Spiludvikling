@@ -462,7 +462,7 @@ public class LabyrintSpilApp extends GameApplication {
 
             // order of types is the same as passed into the constructor
             @Override
-            protected void onCollisionBegin(Entity player, Entity coin) {
+            protected void onCollision(Entity player, Entity coin) {
 
                 // fjerner coin når man samler den op
                 coin.removeFromWorld();
