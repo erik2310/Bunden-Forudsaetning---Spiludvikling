@@ -85,6 +85,19 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
+        Entities.builder()
+                .type(EntityType.COIN)
+                .at(190, 190)
+                .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+        Entities.builder()
+                .type(EntityType.COIN)
+                .at(160, 190)
+                .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+
         // fylder et område ud med rektangler
         for (int y = 65, arrayY = 0; y < 680; y = y + 31, arrayY++) {
             for (int x = 9, arrayX = 0; x < 680; x = x + 31, arrayX++) {
@@ -432,6 +445,14 @@ public class LabyrintSpilApp extends GameApplication {
     // Her kan man tilføje fysik til spillet
     @Override
     protected void initPhysics() {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.COIN) {
+
+            // order of types is the same as passed into the constructor
+            @Override
+            protected void onCollisionBegin(Entity player, Entity coin) {
+                coin.removeFromWorld();
+            }
+        });
 
         // Håndtere kolisioner mellem en Player type og Wall type
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
