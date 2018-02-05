@@ -467,8 +467,8 @@ public class LabyrintSpilApp extends GameApplication {
                 // fjerner coin når man samler den op
                 coin.removeFromWorld();
 
-                // spiller drop.wav når man samler den op
-                getAudioPlayer().playSound("drop.wav");
+                // spiller collectcoin.wav når man samler den op
+                getAudioPlayer().playSound("collectcoin.wav");
             }
         });
 
