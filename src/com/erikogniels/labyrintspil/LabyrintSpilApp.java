@@ -131,11 +131,7 @@ public class LabyrintSpilApp extends GameApplication {
                 getAudioPlayer().playSound("drop.wav");
             }
         });
-        getGameState().<Integer>addListener("coin", (prev, now) -> {
-            if (now % 100 == 0) { //Bib lyd for hver coin
-                getAudioPlayer().playSound("drop.wav");
-            }
-        });
+
     }
 
     private void removeLevel1Walls() {
@@ -467,7 +463,12 @@ public class LabyrintSpilApp extends GameApplication {
             // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity coin) {
+
+                // fjerner coin når man samler den op
                 coin.removeFromWorld();
+
+                // spiller drop.wav når man samler den op
+                getAudioPlayer().playSound("drop.wav");
             }
         });
 
@@ -579,7 +580,6 @@ public class LabyrintSpilApp extends GameApplication {
             protected void onAction() {
                 player.translateX(2); // går 2 pixels til højre
                 getGameState().increment("pixelsMoved", +2);
-                getGameState().increment("coin", +2);
             }
         }, KeyCode.RIGHT);
 
@@ -588,7 +588,6 @@ public class LabyrintSpilApp extends GameApplication {
             protected void onAction() {
                 player.translateX(-2); // går 2 pixels til venstre
                 getGameState().increment("pixelsMoved", +2);
-                getGameState().increment("coin", +2);
             }
         }, KeyCode.LEFT);
 
@@ -597,7 +596,6 @@ public class LabyrintSpilApp extends GameApplication {
             protected void onAction() {
                 player.translateY(-2); // går 2 pixels op
                 getGameState().increment("pixelsMoved", +2);
-                getGameState().increment("coin", +2);
             }
         }, KeyCode.UP);
 
@@ -606,7 +604,6 @@ public class LabyrintSpilApp extends GameApplication {
             protected void onAction() {
                 player.translateY(2); // går 2 pixels ned
                 getGameState().increment("pixelsMoved", +2);
-                getGameState().increment("coin", +2);
             }
         }, KeyCode.DOWN);
 
@@ -621,7 +618,7 @@ public class LabyrintSpilApp extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("pixelsMoved", 0);
-        vars.put("coin", 0);
+
     }
 
     private Text level1Text = new Text("Level 1"); // laver en tekst til vores level numre
