@@ -27,6 +27,9 @@ import java.util.Map;
 
 public class LabyrintSpilApp extends GameApplication {
 
+    public LabyrintSpilApp() {
+    }
+
     // Her kan man ændre indstillinger for spillet
     @Override
     protected void initSettings(GameSettings settings) {
@@ -43,6 +46,7 @@ public class LabyrintSpilApp extends GameApplication {
     private Entity startWall;
     private Entity slutWall[] = new Entity[2];
     private Entity wall[][] = new Entity[30][30];
+    private Entity coin;
 
     // Her kan man sætte ting som skal være klare inden spillet starter
     @Override
@@ -91,9 +95,17 @@ public class LabyrintSpilApp extends GameApplication {
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
+
         Entities.builder()
                 .type(EntityType.COIN)
                 .at(160, 190)
+                .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+
+        Entities.builder()
+                .type(EntityType.COIN)
+                .at(130, 190)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
@@ -454,6 +466,7 @@ public class LabyrintSpilApp extends GameApplication {
             }
         });
 
+
         // Håndtere kolisioner mellem en Player type og Wall type
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
             @Override
@@ -523,6 +536,27 @@ public class LabyrintSpilApp extends GameApplication {
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
+                Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(250, 190)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(220, 190)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(190, 190)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
                 // sætter level teksten til Level 2
                 level1Text.setText("Level 2");
 
@@ -567,7 +601,7 @@ public class LabyrintSpilApp extends GameApplication {
             }
         }, KeyCode.DOWN);
 
-/*        input.addAction(new UserAction("Play Sound") {
+   /*     input.addAction(new UserAction("Play Sound") {
             @Override
             protected void onActionBegin() {
                 getAudioPlayer().playSound("drop.wav");
