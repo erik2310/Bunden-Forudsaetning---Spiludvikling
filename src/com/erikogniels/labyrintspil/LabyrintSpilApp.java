@@ -17,10 +17,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import java.util.Map;
 
 public class LabyrintSpilApp extends GameApplication {
+
+    public LabyrintSpilApp() {
+    }
 
     // Her kan man ændre indstillinger for spillet
     @Override
@@ -38,8 +40,7 @@ public class LabyrintSpilApp extends GameApplication {
     private Entity startWall;
     private Entity slutWall[] = new Entity[2];
     private Entity wall[][] = new Entity[30][30];
-    private Entity coin[] = new Entity[100];
-    private int pointCounter = 0;
+//    private Entity coin;
 
     // Her kan man sætte ting som skal være klare inden spillet starter
     @Override
@@ -82,246 +83,245 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        // laver coins til level 1
-        coin[0] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(190, 190)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[1] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(160, 190)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[2] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(130, 190)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[3] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(381, 190)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[4] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(133, 250)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[5] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(163, 250)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[6] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(193, 250)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[7] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(193, 220)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[8] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(351, 220)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[9] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(536, 220)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[10] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(536, 250)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[11] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(536, 280)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[12] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(381, 220)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[13] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(381, 160)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[14] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(381, 130)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[15] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(40, 282)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[16] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(70, 282)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[17] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(100, 282)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[18] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(130, 282)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[19] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(410, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[20] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(380, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[21] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(350, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[22] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(320, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[23] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(320, 470)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[24] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(320, 440)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[25] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(350, 436)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[26] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(350, 406)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[27] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(350, 375)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[28] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(320, 375)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[29] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(505, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[30] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(535, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[31] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(565, 500)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[32] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(505, 530)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[33] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(505, 560)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        coin[34] = Entities.builder()
+        Entities.builder()
                 .type(EntityType.COIN)
                 .at(505, 590)
                 .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
@@ -350,17 +350,6 @@ public class LabyrintSpilApp extends GameApplication {
             }
         });
 
-    }
-
-    // fjerner coins fra en level
-    private void removeCoins() {
-        try {
-            for (int i = 0; i < 100; i++) {
-                coin[i].removeFromWorld();
-            }
-        } catch (Exception e) {
-
-        }
     }
 
     private void removeLevel1Walls() {
@@ -668,65 +657,6 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
-    private void removeLevel3Walls() {
-
-        // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
-        for (int i = 0; i < 19; i++) {
-            wall[i][10].removeFromWorld();
-        }
-        for (int i = 9; i > 0; i--) {
-            wall[1][i].removeFromWorld();
-        }
-        for (int i = 2; i < 19; i++) {
-            wall[i][1].removeFromWorld();
-        }
-        wall[18][2].removeFromWorld();
-        wall[18][3].removeFromWorld();
-        for (int i = 18; i > 1; i--) {
-            wall[i][3].removeFromWorld();
-        }
-        for (int i = 9; i > 4; i--) {
-            wall[3][i].removeFromWorld();
-        }
-        wall[18][9].removeFromWorld();
-        wall[18][8].removeFromWorld();
-        wall[18][7].removeFromWorld();
-        wall[18][6].removeFromWorld();
-        wall[18][5].removeFromWorld();
-        wall[19][5].removeFromWorld();
-        wall[20][5].removeFromWorld();
-        wall[21][5].removeFromWorld();
-        for (int i = 16; i > 3; i--) {
-            wall[i][5].removeFromWorld();
-        }
-        for (int i = 16; i > 3; i--) {
-            wall[i][7].removeFromWorld();
-        }
-        wall[16][6].removeFromWorld();
-        for (int i = 11; i < 19; i++) {
-            wall[18][i].removeFromWorld();
-        }
-        for (int i = 17; i > 0; i--) {
-            wall[i][18].removeFromWorld();
-        }
-        for (int i = 17; i > 0; i--) {
-            wall[i][16].removeFromWorld();
-        }
-        wall[1][17].removeFromWorld();
-        wall[16][11].removeFromWorld();
-        wall[16][12].removeFromWorld();
-        wall[16][13].removeFromWorld();
-        wall[16][14].removeFromWorld();
-        for (int i = 1; i < 16; i++) {
-            wall[i][14].removeFromWorld();
-        }
-        for (int i = 1; i < 16; i++) {
-            wall[i][12].removeFromWorld();
-        }
-        wall[1][13].removeFromWorld();
-
-    }
-
     private void returnAllWallsToTheGame() {
 
         // fylder et område ud med rektangler
@@ -743,19 +673,6 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
-    // fjerner alle walls fra spillet
-    private void removeAllWalls() {
-        try {
-            for (int arrayY = 0; arrayY < 20; arrayY++) {
-                for (int arrayX = 0; arrayX < 22; arrayX++) {
-                    wall[arrayX][arrayY].removeFromWorld();
-                }
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
     // Her kan man tilføje fysik til spillet
     @Override
     protected void initPhysics() {
@@ -770,12 +687,6 @@ public class LabyrintSpilApp extends GameApplication {
 
                 // spiller collectcoin.wav når man samler den op
                 getAudioPlayer().playSound("collectcoin.wav");
-
-                // tilføjer 100 point til pointCounter
-                pointCounter = pointCounter + 100;
-
-                // opdaterer pointText
-                pointText.setText("Point: " + pointCounter);
             }
         });
 
@@ -816,11 +727,8 @@ public class LabyrintSpilApp extends GameApplication {
                 // fjerner slutWall[1] i level 1
                 slutWall[1].removeFromWorld();
 
-                // fjerner coins som man ikke samler op fra level 1
-                removeCoins();
-
-                // fjerner alle walls
-                removeAllWalls();
+                // fjerner walls til level 2
+                removeLevel2Walls();
 
                 // Tilføjer alle walls tilbage igen
                 returnAllWallsToTheGame();
@@ -852,29 +760,28 @@ public class LabyrintSpilApp extends GameApplication {
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
-                // laver coins til level 2
-                coin[0] = Entities.builder()
+                Entities.builder()
                         .type(EntityType.COIN)
                         .at(250, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
-                coin[1] = Entities.builder()
+                Entities.builder()
                         .type(EntityType.COIN)
                         .at(220, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
-                coin[2] = Entities.builder()
+                Entities.builder()
                         .type(EntityType.COIN)
                         .at(190, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
-                coin[3] = Entities.builder()
+                Entities.builder()
                         .type(EntityType.COIN)
                         .at(190, 160)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
@@ -882,85 +789,7 @@ public class LabyrintSpilApp extends GameApplication {
                         .buildAndAttach(getGameWorld());
 
                 // sætter level teksten til Level 2
-                levelText.setText("Level 2");
-
-            }
-        });
-
-        // Håndtere kolisioner mellem en Player type og SlutWallLVL2 type
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.SLUTWALLLVL2) {
-            @Override
-            protected void onCollision(Entity player1, Entity slutWall1) {
-
-                // fjerner spilleren fra verdenen i level 2
-                player.removeFromWorld();
-
-                // fjerner startWall i level 2
-                startWall.removeFromWorld();
-
-                // fjerner slutWall[1] i level 2
-                slutWall[1].removeFromWorld();
-
-                // fjerner coins som man ikke samler op fra level 2
-                removeCoins();
-
-                // fjerner alle walls
-                removeAllWalls();
-
-                // Tilføjer alle walls tilbage igen
-                returnAllWallsToTheGame();
-
-                // fjerner walls til level 3
-                removeLevel3Walls();
-
-                // skaber en ny startWall til level 3
-                startWall = Entities.builder()
-                        .type(EntityType.WALL)
-                        .at(5, 363)
-                        .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
-                        .with(new CollidableComponent(true))
-                        .buildAndAttach(getGameWorld());
-
-                // skaber en ny spiller til level 3
-                player = Entities.builder()
-                        .type(EntityType.PLAYER)
-                        .at(12, 380)
-                        .viewFromNodeWithBBox(new Circle(10, Color.BLUE))
-                        .with(new CollidableComponent(true))
-                        .buildAndAttach(getGameWorld());
-
-                // skaber en ny slutWall[1] til level 3
-                slutWall[1] = Entities.builder()
-                        .type(EntityType.SLUTWALLLVL3)
-                        .at(690, 211)
-                        .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
-                        .with(new CollidableComponent(true))
-                        .buildAndAttach(getGameWorld());
-
-                // laver coins til level 3
-                coin[0] = Entities.builder()
-                        .type(EntityType.COIN)
-                        .at(250, 158)
-                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
-                        .with(new CollidableComponent(true))
-                        .buildAndAttach(getGameWorld());
-
-                coin[1] = Entities.builder()
-                        .type(EntityType.COIN)
-                        .at(220, 158)
-                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
-                        .with(new CollidableComponent(true))
-                        .buildAndAttach(getGameWorld());
-
-                coin[2] = Entities.builder()
-                        .type(EntityType.COIN)
-                        .at(190, 158)
-                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
-                        .with(new CollidableComponent(true))
-                        .buildAndAttach(getGameWorld());
-
-                // sætter level teksten til Level 3
-                levelText.setText("Level 3");
+                level1Text.setText("Level 2");
 
             }
         });
@@ -1017,21 +846,15 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
-    private Text levelText = new Text("Level 1"); // laver en tekst til vores level numre
-    private Text pointText = new Text("Point: " + pointCounter); // laver en tekst til vores level numre
-
+    private Text level1Text = new Text("Level 1"); // laver en tekst til vores level numre
 
     // Her kan man tilføje tekst elementer
     @Override
     protected void initUI() {
 
-        levelText.setTranslateX(15); // dens x position
-        levelText.setTranslateY(35); // dens y position
-        levelText.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
-
-        pointText.setTranslateX(530); // dens x position
-        pointText.setTranslateY(35); // dens y position
-        pointText.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
+        level1Text.setTranslateX(15); // dens x position
+        level1Text.setTranslateY(35); // dens y position
+        level1Text.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
 
         Text skridtTaeller = new Text();
         skridtTaeller.setTranslateX(200); // dens x position
@@ -1045,8 +868,7 @@ public class LabyrintSpilApp extends GameApplication {
 */
 
         // tilføjer vores tekst objekter til spillet
-        getGameScene().addUINode(levelText);
-        getGameScene().addUINode(pointText);
+        getGameScene().addUINode(level1Text);
         getGameScene().addUINode(skridtTaeller);
         //getGameScene().addUINode(mazeTexture);
     }
