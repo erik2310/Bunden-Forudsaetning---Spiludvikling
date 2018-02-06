@@ -986,6 +986,41 @@ public class LabyrintSpilApp extends GameApplication {
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
+                coin[19] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(163, 499)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[20] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(193, 499)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[21] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(195, 529)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[22] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(195, 562)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[23] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(163, 562)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
 
                 // sætter level teksten til Level 2
                 levelText.setText("Level 2");
