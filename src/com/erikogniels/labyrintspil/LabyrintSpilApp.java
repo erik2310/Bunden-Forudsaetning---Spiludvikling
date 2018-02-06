@@ -47,7 +47,7 @@ public class LabyrintSpilApp extends GameApplication {
     protected void initGame() {
 
         // viser level 1
-        showLevel3();
+        showLevel1();
 
     }
 
@@ -707,7 +707,7 @@ public class LabyrintSpilApp extends GameApplication {
 
     // En metode til at kalde på level 3
     private void showLevel3() {
-/*
+
         // fjerner spilleren fra verdenen i level 2
         player.removeFromWorld();
 
@@ -721,7 +721,7 @@ public class LabyrintSpilApp extends GameApplication {
         removeCoins();
 
         // fjerner alle walls
-        removeAllWalls(); */
+        removeAllWalls();
 
         // Tilføjer alle walls tilbage igen
         returnAllWallsToTheGame();
@@ -1758,7 +1758,7 @@ public class LabyrintSpilApp extends GameApplication {
     // fjerner coins fra en level
     private void removeCoins() {
         try {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 200; i++) {
                 coin[i].removeFromWorld();
             }
         } catch (Exception e) {
@@ -2306,13 +2306,30 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
+    private int min = 0, sec = 0;
     private Text levelText = new Text("Level 1"); // laver en tekst til vores level numre
     private Text pointText = new Text("Point: " + pointCounter); // laver en tekst til vores level numre
-
+    private Text timerText = new Text("Time: " + min + ":" + sec); // laver en tekst til vores timer
 
     // Her kan man tilføje tekst elementer
     @Override
     protected void initUI() {
+
+        // kører koden til vores timer 1 gang per sekund
+        getMasterTimer().runAtInterval(() -> {
+            sec++;
+
+            if (sec == 60) {
+                min++;
+                sec = 0;
+            }
+
+            timerText.setText("Time: " + min + ":" + sec);
+        }, javafx.util.Duration.seconds(1));
+
+        timerText.setTranslateX(350); // dens x position
+        timerText.setTranslateY(35); // dens y position
+        timerText.setFont(new Font("Arial Rounded MT Bold", 28)); // sætter fontet til at være Arial Rounded MT Bold med størrelse 28
 
         levelText.setTranslateX(15); // dens x position
         levelText.setTranslateY(35); // dens y position
@@ -2336,6 +2353,7 @@ public class LabyrintSpilApp extends GameApplication {
         // tilføjer vores tekst objekter til spillet
         getGameScene().addUINode(levelText);
         getGameScene().addUINode(pointText);
+        getGameScene().addUINode(timerText);
         getGameScene().addUINode(skridtTaeller);
         //getGameScene().addUINode(mazeTexture);
     }
