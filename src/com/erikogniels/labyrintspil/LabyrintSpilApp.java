@@ -11,6 +11,7 @@ import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.settings.GameSettings;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -744,6 +745,14 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
+        // skaber en ny slutWall[0] til level 3
+        slutWall[0] = Entities.builder()
+                .type(EntityType.WALL)
+                .at(690, 211)
+                .viewFromNodeWithBBox(new Rectangle(5, 50, Color.BLACK))
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+
         // skaber en ny slutWall[1] til level 3
         slutWall[1] = Entities.builder()
                 .type(EntityType.SLUTWALLLVL3)
@@ -1279,6 +1288,36 @@ public class LabyrintSpilApp extends GameApplication {
 
                 // viser level 3
                 showLevel3();
+
+            }
+        });
+
+        // Håndtere kolisioner mellem en Player type og SLUTWALLLVL3
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.SLUTWALLLVL3) {
+            @Override
+            protected void onCollision(Entity player, Entity wall) {
+                if (getInput().isHeld(KeyCode.RIGHT)) {
+                    player.translateX(-2);
+                }
+                if (getInput().isHeld(KeyCode.LEFT)) {
+                    player.translateX(2);
+                }
+                if (getInput().isHeld(KeyCode.UP)) {
+                    player.translateY(2);
+                }
+                if (getInput().isHeld(KeyCode.DOWN)) {
+                    player.translateY(-2);
+                }
+
+                // fjerner slutWall[1] så den ikke laver mange pop-up bokse
+                slutWall[1].removeFromWorld();
+
+                // laver en pop-up boks med en besked når man når til slutningen af spillet
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Tillykke!");
+                alert.setHeaderText("Du har gennemført vores Labyrint Spil!");
+                alert.setContentText("Du fik " + pointCounter + " point!");
+                alert.show();
 
             }
         });
