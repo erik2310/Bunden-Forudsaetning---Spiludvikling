@@ -855,7 +855,7 @@ public class LabyrintSpilApp extends GameApplication {
                 // laver coins til level 2
                 coin[0] = Entities.builder()
                         .type(EntityType.COIN)
-                        .at(253, 190)
+                        .at(255, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
@@ -1017,6 +1017,34 @@ public class LabyrintSpilApp extends GameApplication {
                 coin[23] = Entities.builder()
                         .type(EntityType.COIN)
                         .at(163, 562)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[24] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(287, 313)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[25] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(287, 343)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[26] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(287, 373)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[27] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(287, 403)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
