@@ -876,10 +876,116 @@ public class LabyrintSpilApp extends GameApplication {
 
                 coin[3] = Entities.builder()
                         .type(EntityType.COIN)
-                        .at(195, 160)
+                        .at(195, 159)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
+
+                coin[4] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(165, 159)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[5] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(135, 159)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[6] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(102, 159)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[7] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(73, 159)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[8] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(43, 159)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[9] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(133, 437)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[10] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(101, 437)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[11] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(71, 437)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[12] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(40, 437)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[13] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(40, 468)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[14] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(40, 498)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[15] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(40, 529)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[16] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(70, 529)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[17] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(100, 529)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                coin[18] = Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(130, 529)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
 
                 // sætter level teksten til Level 2
                 levelText.setText("Level 2");
