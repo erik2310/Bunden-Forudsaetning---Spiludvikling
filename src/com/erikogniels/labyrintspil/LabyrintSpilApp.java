@@ -11,6 +11,7 @@ import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.settings.GameSettings;
+import com.almasb.fxgl.time.TimerAction;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -2251,6 +2252,8 @@ public class LabyrintSpilApp extends GameApplication {
                 alert.setContentText("Du fik " + pointCounter + " point!");
                 alert.show();
 
+                // stopper vores timer
+                timer.pause();
             }
         });
     }
@@ -2310,13 +2313,14 @@ public class LabyrintSpilApp extends GameApplication {
     private Text levelText = new Text("Level 1"); // laver en tekst til vores level numre
     private Text pointText = new Text("Point: " + pointCounter); // laver en tekst til vores level numre
     private Text timerText = new Text("Time: " + min + ":" + sec); // laver en tekst til vores timer
+    TimerAction timer;
 
     // Her kan man tilføje tekst elementer
     @Override
     protected void initUI() {
 
         // kører koden til vores timer 1 gang per sekund
-        getMasterTimer().runAtInterval(() -> {
+        timer = getMasterTimer().runAtInterval(() -> {
             sec++;
 
             if (sec == 60) {
