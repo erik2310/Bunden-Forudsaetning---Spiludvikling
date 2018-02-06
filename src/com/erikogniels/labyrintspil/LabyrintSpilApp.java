@@ -46,7 +46,7 @@ public class LabyrintSpilApp extends GameApplication {
     protected void initGame() {
 
         // viser level 1
-        showLevel1();
+        showLevel2();
 
     }
 
@@ -362,7 +362,7 @@ public class LabyrintSpilApp extends GameApplication {
 
     // En metode til at kalde på level 2
     private void showLevel2() {
-
+/*
         // fjerner spilleren fra verdenen i level 1
         player.removeFromWorld();
 
@@ -379,7 +379,7 @@ public class LabyrintSpilApp extends GameApplication {
         removeCoins();
 
         // fjerner alle walls
-        removeAllWalls();
+        removeAllWalls(); */
 
         // Tilføjer alle walls tilbage igen
         returnAllWallsToTheGame();
