@@ -762,28 +762,35 @@ public class LabyrintSpilApp extends GameApplication {
 
                 Entities.builder()
                         .type(EntityType.COIN)
-                        .at(250, 190)
+                        .at(197, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
                 Entities.builder()
                         .type(EntityType.COIN)
-                        .at(220, 190)
+                        .at(226, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
                 Entities.builder()
                         .type(EntityType.COIN)
-                        .at(190, 190)
+                        .at(255, 190)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
 
                 Entities.builder()
                         .type(EntityType.COIN)
-                        .at(190, 160)
+                        .at(195, 160)
+                        .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
+                        .with(new CollidableComponent(true))
+                        .buildAndAttach(getGameWorld());
+
+                Entities.builder()
+                        .type(EntityType.COIN)
+                        .at(400, 220)
                         .viewFromNodeWithBBox(new Circle(15, Color.YELLOW))
                         .with(new CollidableComponent(true))
                         .buildAndAttach(getGameWorld());
