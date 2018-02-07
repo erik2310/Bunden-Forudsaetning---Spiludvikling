@@ -13,4 +13,6 @@ Open Source! For brug af AlmasB's FXGL version af Java FX, <b>[klik her](http://
 
 ## Udviklerne
 Spillet er udviklet af <b>[Erik Ruhmanis](https://github.com/erik2310)</b> og <b>[Niels Bo Dissing](https://github.com/niel905g)</b>.  
-Med støtte af vores lærer i programmering, <b>[András Ács](https://github.com/andracs)</b>.
+Med støtte af vores lærer i programmering på EASJ-Næstved, <b>[András Ács](https://github.com/andracs)</b>.
+
+<img src="http://www.hva-nu.dk/wp-content/uploads/2014/04/logo_long_dk_sort_300dpi.jpg">
