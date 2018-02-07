@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Bunden-Forudsaetning---Spiludvikling:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Bunden_Forudsaetning___Spiludvikling_jar</output-path>
+    <root id="archive" name="Bunden-Forudsaetning---Spiludvikling.jar">
+      <element id="module-output" name="Bunden-Forudsaetning---Spiludvikling" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/FXGL library/fxgl-0.4.2-uber.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
