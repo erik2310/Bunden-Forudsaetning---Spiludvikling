@@ -1,7 +1,7 @@
 // Vores spils package navn
 package com.erikogniels.labyrintspil;
 
-//Imports som skal bruges til FXGL
+//Imports som skal bruges til FXGL og JavaFX elementer
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
@@ -41,7 +41,7 @@ public class LabyrintSpilApp extends GameApplication {
     private Entity slutWall[] = new Entity[2];
     private Entity wall[][] = new Entity[30][30];
     private Entity coin[] = new Entity[200];
-    private int pointCounter = 0;
+    private int pointCounter = 0; // laver en int variabel til vores point tæller
 
     // Her kan man sætte ting som skal være klare inden spillet starter
     @Override
@@ -55,6 +55,7 @@ public class LabyrintSpilApp extends GameApplication {
     // En metode til at kalde på level 1
     private void showLevel1() {
 
+        // laver vores player
         player = Entities.builder()
                 .type(EntityType.PLAYER)
                 .at(12, 505)
@@ -62,6 +63,7 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
+        // laver en tynd væg under level teksten
         overstePanelVaeg = Entities.builder()
                 .type(EntityType.WALL)
                 .at(0, 50)
@@ -69,6 +71,7 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
+        // laver væggen ved siden af spilleren, der hvor man starter
         startWall = Entities.builder()
                 .type(EntityType.WALL)
                 .at(5, 488)
@@ -92,7 +95,7 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        // laver coins til level 1
+        // laver coins til level 1 og gemmer dem i et coins array
         coin[0] = Entities.builder()
                 .type(EntityType.COIN)
                 .at(190, 190)
@@ -338,7 +341,7 @@ public class LabyrintSpilApp extends GameApplication {
                 .with(new CollidableComponent(true))
                 .buildAndAttach(getGameWorld());
 
-        // fylder et område ud med rektangler
+        // fylder et område ud med rektangler til vores labyrint
         for (int y = 65, arrayY = 0; y < 680; y = y + 31, arrayY++) {
             for (int x = 9, arrayX = 0; x < 680; x = x + 31, arrayX++) {
                 wall[arrayX][arrayY] = Entities.builder()
@@ -1767,6 +1770,7 @@ public class LabyrintSpilApp extends GameApplication {
         }
     }
 
+    // fjerner vægge til level 1
     private void removeLevel1Walls() {
 
         // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
@@ -1906,6 +1910,7 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
+    // fjerner vægge til level 2
     private void removeLevel2Walls() {
 
         // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
@@ -2072,6 +2077,7 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
+    // fjerner vægge til level 3
     private void removeLevel3Walls() {
 
         // fjerner nogen rektangeler på en x og y koordinat for at tegne vejen hvor man kan gå
@@ -2131,6 +2137,7 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
+    // fylder et område ud med rektangler
     private void returnAllWallsToTheGame() {
 
         // fylder et område ud med rektangler
@@ -2165,7 +2172,6 @@ public class LabyrintSpilApp extends GameApplication {
     protected void initPhysics() {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.COIN) {
 
-            // order of types is the same as passed into the constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity coin) {
 
@@ -2188,6 +2194,7 @@ public class LabyrintSpilApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
             @Override
             protected void onCollision(Entity player, Entity wall) {
+                // følgende if sætninger gør at man ikke kan gå igennem væggene
                 if (getInput().isHeld(KeyCode.RIGHT)) {
                     player.translateX(-2);
                 }
@@ -2229,6 +2236,7 @@ public class LabyrintSpilApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.SLUTWALLLVL3) {
             @Override
             protected void onCollision(Entity player, Entity wall) {
+                // følgende if sætninger gør at man ikke kan gå igennem væggene
                 if (getInput().isHeld(KeyCode.RIGHT)) {
                     player.translateX(-2);
                 }
@@ -2309,11 +2317,11 @@ public class LabyrintSpilApp extends GameApplication {
 
     }
 
-    private int min = 0, sec = 0;
+    private int min = 0, sec = 0; // int variabler til minutter og sekunder som bruges til vores timer
     private Text levelText = new Text("Level 1"); // laver en tekst til vores level numre
     private Text pointText = new Text("Point: " + pointCounter); // laver en tekst til vores level numre
     private Text timerText = new Text("Time: " + min + ":" + sec); // laver en tekst til vores timer
-    TimerAction timer;
+    private TimerAction timer; // laver et TimerAction opbjekt til vores timer, så vi kan bruge den til at stoppe timeren
 
     // Her kan man tilføje tekst elementer
     @Override
