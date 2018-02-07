@@ -1,3 +1,5 @@
+package com.erikogniels.labyrintspil;
+
 public class MyMap {
 
     private static int[][] arrayNoWalls = {
